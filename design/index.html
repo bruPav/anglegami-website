@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Your Anglegami</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .overlay-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .upload-overlay {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28%;
+      height: 21%;
+      background: rgba(128,128,128,0.5);
+      border: 3px dashed #888;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .upload-overlay2 {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28%;
+      height: 12%;
+      background: rgba(128,128,128,0.5);
+      border: 3px dashed #888;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .upload-overlay span {
+      color: #444;
+      font-size: 0.5rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 2px 8px #fff8;
+    }
+    .upload-overlay2 span {
+      color: #444;
+      font-size: 0.5rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 2px 8px #fff8;
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
+    <div class="overlay-container">
+      <img src="Sketch.png" alt="Design your Anglegami" style="max-width: 90vw; max-height: 80vh; border-radius: 24px; box-shadow: 0 4px 32px rgba(0,0,0,0.12); background: #fff8; padding: 1.5rem;">
+      <div class="upload-overlay"><span>Upload your design 1</span></div>
+      <div class="upload-overlay2"><span>Upload your design 2</span></div>
+    </div>
+    <a href="../index.html" class="cta" style="margin-top: 2rem;">Return to Home</a>
+  </div>
+</body>
+</html> 

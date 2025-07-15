@@ -59,24 +59,54 @@
       text-align: center;
       text-shadow: 0 2px 8px #fff8;
     }
+    @keyframes jump-arrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(18px); }
+    }
+    @keyframes funky-arrow {
+      0%, 100% { transform: translateY(0) rotate(-5deg) scale(1); }
+      20% { transform: translateY(10px) rotate(8deg) scale(1.08); }
+      50% { transform: translateY(28px) rotate(-8deg) scale(1.15); }
+      80% { transform: translateY(10px) rotate(8deg) scale(1.08); }
+    }
   </style>
 </head>
 <body>
   <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
-    <div class="overlay-container">
-      <img src="Sketch.png" alt="Design your Anglegami" style="max-width: 90vw; max-height: 80vh; border-radius: 24px; box-shadow: 0 4px 32px rgba(0,0,0,0.12); background: #fff8; padding: 1.5rem;">
-      <!-- Upload 1 Formspree Form -->
-      <form action="https://formspree.io/f/xovlqqlg" method="POST" enctype="multipart/form-data" class="upload-overlay" style="pointer-events:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; background: rgba(128,128,128,0.5); border: 3px dashed #888; border-radius: 18px; width: 28%; height: 21%; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index:2;">
-        <label style="color:#444; font-size:0.9rem; font-weight:bold; text-align:center; text-shadow:0 2px 8px #fff8;">Upload your design 1</label>
-        <input type="file" name="design1" accept=".png,.jpg,.jpeg,.svg" required style="margin-bottom:0.5rem;" />
-        <button type="submit" style="padding:0.3rem 1rem; border-radius:8px; border:none; background:#444; color:#fff; font-weight:bold; cursor:pointer;">Upload</button>
-      </form>
-      <!-- Upload 2 Formspree Form -->
-      <form action="https://formspree.io/f/xblkjjag" method="POST" enctype="multipart/form-data" class="upload-overlay2" style="pointer-events:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; background: rgba(128,128,128,0.5); border: 3px dashed #888; border-radius: 18px; width: 28%; height: 12%; position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); z-index:2;">
-        <label style="color:#444; font-size:0.9rem; font-weight:bold; text-align:center; text-shadow:0 2px 8px #fff8;">Upload your design 2</label>
-        <input type="file" name="design2" accept=".png,.jpg,.jpeg,.svg" required style="margin-bottom:0.5rem;" />
-        <button type="submit" style="padding:0.3rem 1rem; border-radius:8px; border:none; background:#444; color:#fff; font-weight:bold; cursor:pointer;">Upload</button>
-      </form>
+    <div class="overlay-container" style="display: flex; flex-direction: row; align-items: center; justify-content: center; position: relative; width: 100%;">
+      <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
+        <img src="Sketch.png" alt="Design your Anglegami" style="max-width: 90vw; max-height: 80vh; border-radius: 24px; box-shadow: 0 4px 32px rgba(0,0,0,0.12); background: #fff8; padding: 1.5rem;">
+        <!-- Upload 1 Formspree Form (overlay, label and submit only) -->
+        <form action="https://formspree.io/f/xovlqqlg" method="POST" enctype="multipart/form-data" class="upload-overlay" style="pointer-events:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; background: rgba(128,128,128,0.5); border: 3px dashed #888; border-radius: 18px; width: 28%; height: 21%; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index:2;">
+          <label style="color:#444; font-size:0.9rem; font-weight:bold; text-align:center; text-shadow:0 2px 8px #fff8;">Design 1</label>
+          <button type="submit" style="padding:0.3rem 1rem; border-radius:8px; border:none; background:#444; color:#fff; font-weight:bold; cursor:pointer;">Upload</button>
+        </form>
+        <!-- Upload 2 Formspree Form (overlay, label and submit only) -->
+        <form action="https://formspree.io/f/xblkjjag" method="POST" enctype="multipart/form-data" class="upload-overlay2" style="pointer-events:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; background: rgba(128,128,128,0.5); border: 3px dashed #888; border-radius: 18px; width: 28%; height: 18%; position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); z-index:2;">
+          <label style="color:#444; font-size:0.9rem; font-weight:bold; text-align:center; text-shadow:0 2px 8px #fff8;">Design 2</label>
+          <button type="submit" style="padding:0.3rem 1rem; border-radius:8px; border:none; background:#444; color:#fff; font-weight:bold; cursor:pointer;">Upload</button>
+        </form>
+      </div>
+      <!-- File inputs to the right of the image -->
+      <div style="display: flex; flex-direction: column; gap: 2rem; margin-left: 2rem; align-items: flex-start; justify-content: center; margin-top: -2rem;">
+        <!-- Instruction and arrow image above file inputs -->
+        <div style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 0.2rem; min-width: 220px;">
+          <span style="font-size: 1.15rem; font-weight: bold; color: #4a148c; margin-bottom: 0.7rem; text-align: left; text-shadow: 0 2px 8px #fff8;">Select your png, svg, or jpg file and press upload</span>
+          <img src="arrow.png" alt="Down arrow" style="width: 60px; height: 60px; margin-top: 0.2rem; margin-bottom: 0.2rem; display: block; animation: jump-arrow-img 1.2s infinite;" />
+        </div>
+        <style>
+          @keyframes jump-arrow-img {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(18px); }
+          }
+        </style>
+        <form action="https://formspree.io/f/xovlqqlg" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: flex-start;">
+          <input type="file" name="design1" accept=".png,.jpg,.jpeg,.svg" required style="margin-bottom:0.5rem;" />
+        </form>
+        <form action="https://formspree.io/f/xblkjjag" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 1.5rem;">
+          <input type="file" name="design2" accept=".png,.jpg,.jpeg,.svg" required style="margin-bottom:0.5rem;" />
+        </form>
+      </div>
     </div>
     <a href="../index.html" class="cta" style="margin-top: 2rem;">Return to Home</a>
   </div>
